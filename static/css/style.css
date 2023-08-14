@@ -1,0 +1,34 @@
+a {
+    color: blue;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+header {
+    background-color: #4fb1e3; /* Color de fondo */
+    padding: 2px 0; /*Espacio interno arriba y abajo */
+    margin: 0; /* Eliminar margen */
+    position: fixed; /* Fijar en la parte superior */
+    width: 100%; /* Ancho completo */
+    top: 0; /* Alinear en la parte superior */
+    z-index: 1000; /* Índice de apilamiento */
+}
+nav {
+    display: flex; /* Usar flexbox para alinear los elementos internos */
+    align-items: center; /* Centrar verticalmente los elementos */
+    gap: 20px; /* Espacio entre los elementos de navegación */
+    justify-content: right;
+    padding-right: 40px; /* Espacio en la parte derecha */
+    font-size: 20px;
+}
+
+header section{
+    display: flex; /* Usar flexbox para alinear los elementos internos */
+    align-items: center; /* Centrar verticalmente los elementos */
+    justify-content: left;
+    padding-left: 20px;
+
+}
