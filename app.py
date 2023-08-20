@@ -1,4 +1,4 @@
-# Se configuro para deploy render
+# Se configuro para deploy render rev2
 
 from flask import Flask, render_template, request, redirect, url_for
 import pandas as pd
