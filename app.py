@@ -1,3 +1,5 @@
+# Se configuro para deploy render
+
 from flask import Flask, render_template, request, redirect, url_for
 import pandas as pd
 import matplotlib.pyplot as plt
