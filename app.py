@@ -6,8 +6,14 @@ import base64
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET', 'POST'])
+
+@app.route('/')
 def index():
+    return render_template('index.html')
+
+
+@app.route('/excelUpload', methods=['GET', 'POST'])
+def excelUpload():
     global df_upload
     html_table = None
 
@@ -18,7 +24,7 @@ def index():
             df_upload = df
             html_table = df.to_html(classes='table table-bordered table-striped', index=False)
 
-    return render_template('index.html', html_table=html_table, img_base64=None)
+    return render_template('excelUpload.html', html_table=html_table, img_base64=None)
 
 @app.route('/graphics')
 def graphics():
@@ -43,7 +49,7 @@ def graphics():
 
     plt.close()
 
-    return render_template('index.html', img_base64=img_base64, html_table=None)
+    return render_template('excelUpload.html', img_base64=img_base64, html_table=None)
 
 if __name__ == '__main__':
     app.run(debug=True)

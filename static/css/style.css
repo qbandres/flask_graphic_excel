@@ -15,6 +15,7 @@ header {
     width: 100%; /* Ancho completo */
     top: 0; /* Alinear en la parte superior */
     z-index: 1000; /* Índice de apilamiento */
+    text-align: center;
 }
 nav {
     display: flex; /* Usar flexbox para alinear los elementos internos */
