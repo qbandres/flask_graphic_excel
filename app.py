@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 import pandas as pd
 import matplotlib.pyplot as plt
 import io
@@ -6,25 +6,49 @@ import base64
 
 app = Flask(__name__)
 
+app.secret_key = '20011074'  # Cambia esto por una clave secreta segura
+
+# Simula una base de datos de usuarios
+usuarios = {
+    'andres': '1234',
+    'alonso': '4321',
+}
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.form['username']
+    password = request.form['password']
 
-@app.route('/excelUpload', methods=['GET', 'POST'])
-def excelUpload():
-    global df_upload
-    html_table = None
+    if username in usuarios and usuarios[username] == password:
+        # Autenticación exitosa, guarda el nombre de usuario en la sesión
+        session['username'] = username
+        return redirect(url_for('main'))
+    else:
+        # Autenticación fallida, puedes mostrar un mensaje de error
+        return render_template('index.html', error='Credenciales incorrectas')
 
-    if request.method == 'POST':
-        file = request.files['file']
-        if file and file.filename.endswith('.xlsx'):
-            df = pd.read_excel(file)
-            df_upload = df
-            html_table = df.to_html(classes='table table-bordered table-striped', index=False)
 
-    return render_template('excelUpload.html', html_table=html_table, img_base64=None)
+
+@app.route('/main', methods=['GET', 'POST'])
+def main():
+    if 'username' in session:
+        global df_upload
+        html_table = None
+
+        if request.method == 'POST':
+            file = request.files['file']
+            if file and file.filename.endswith('.xlsx'):
+                df = pd.read_excel(file)
+                df_upload = df
+                html_table = df.to_html(classes='table table-bordered table-striped', index=False)
+
+        return render_template('main.html', html_table=html_table, img_base64=None)
+    else:
+        return redirect(url_for('index'))
 
 @app.route('/graphics')
 def graphics():
