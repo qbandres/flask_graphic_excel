@@ -34,7 +34,7 @@ def login():
 @app.route('/main', methods=['GET', 'POST'])
 def main():
     if 'username' in session:
-        global df_upload
+        global df_upload, html_table
         html_table = None
 
         if request.method == 'POST':
@@ -71,7 +71,7 @@ def graphics():
 
     plt.close()
 
-    return render_template('main.html', img_base64=img_base64, html_table=None)
+    return render_template('main.html',html_table=html_table, img_base64=img_base64)
 
 if __name__ == '__main__':
     app.run(debug=True)
