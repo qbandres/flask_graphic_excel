@@ -31,8 +31,6 @@ def login():
         # Autenticación fallida, puedes mostrar un mensaje de error
         return render_template('index.html', error='Credenciales incorrectas')
 
-
-
 @app.route('/main', methods=['GET', 'POST'])
 def main():
     if 'username' in session:
@@ -73,7 +71,7 @@ def graphics():
 
     plt.close()
 
-    return render_template('excelUpload.html', img_base64=img_base64, html_table=None)
+    return render_template('main.html', img_base64=img_base64, html_table=None)
 
 if __name__ == '__main__':
     app.run(debug=True)
