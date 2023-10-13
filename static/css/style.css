@@ -34,16 +34,29 @@ header section{
 
 }
 
+h1 {
+  color: blue; /* Cambia el color del texto a azul */
+  font-size: 24px; /* Cambia el tamaño de fuente a 24px */
+  text-align: center; /* Centra el texto horizontalmente */
+  /* Puedes agregar más propiedades CSS según tus necesidades */
+}
+
 html {
     height: 100%;
   }
-  body {
+body {
     margin:0;
     padding:0;
     font-family: sans-serif;
     background: #243b55;
   }
-  
+section {
+  background-color: #000; /* Puedes cambiar el color de fondo aquí */
+  color: #fff; /* Cambia el color del texto para que sea legible en un fondo oscuro */
+}
+
+/* Tittle de el login */
+
   .login-box {
     position: absolute;
     top: 50%;

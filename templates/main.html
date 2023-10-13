@@ -2,17 +2,18 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h1>App to graphics Excel</h1>
+    <h1 style="color: blue; font-size: 40px; text-align: center; font-weight: bold;">Aplicación para graficar un Archivo excel</h1>
     <form method="POST" enctype="multipart/form-data" action="">
         <div class="form-group">
             <input type="file" name="file" id="file" class="form-control-file">
         </div>
-        <button type="submit" class="btn btn-primary">Cargar Archivo</button>
+        <p></p>
+        <button type="submit">Cargar Archivo</button>
     </form>
     
     <!-- Verificar si la variable html_table tiene contenido -->
     {% if html_table %}
-    <h2>Tabla generada:</h2>
+    <h2>Cuadro generada:</h2>
     <!-- Muestra el contenido de la tabla html-table -->
     {{ html_table | safe }}
     {% endif %}
@@ -20,13 +21,13 @@
     <!-- Aquí muestra la imagen generada por Matplotlib -->
     {% if img_base64 %}
     <div class="container mt-5">
-        <h1>Gráfico generado:</h1>
+        <h1>Gráfico Resumen:</h1>
         <img src="data:image/png;base64,{{ img_base64 }}" alt="Matplotlib Chart" class="img-fluid">
     </div>
     {% endif %}
 
         
-    <h1>Gráfico</h1>
+    <!-- <h1>Gráfico</h1> -->
     <!-- <img src="data:image/png;base64,{{ img_base64 }}" alt="Gráfico de distribución de personal"> -->
 
     <br><br>

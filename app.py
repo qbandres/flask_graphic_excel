@@ -11,7 +11,8 @@ app.secret_key = '20011074'  # Cambia esto por una clave secreta segura
 # Simula una base de datos de usuarios
 usuarios = {
     'andres': '1234',
-    'alonso': '4321',
+    'lozano': '1234',
+    'fabio': '1234',
 }
 
 @app.route('/')
